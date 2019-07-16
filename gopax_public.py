@@ -27,12 +27,16 @@ class gopax:
     def ticker(self, trading_pair="BTC-KRW"):
         return self.request_get("trading-pairs/" +trading_pair+ "/ticker")
 
+    # level 1 = highest bid, lowest ask
+    # level 2 = 50 bids, 50 asks,
+    # level other = all
     def book(self, trading_pair="BTC-KRW", level="1"):
         params = {
             'level': level
         }
         return self.request_get("trading-pairs/" +trading_pair+ "/book", params=params)
 
+    #max 100 limit
     def recent_trades(self, trading_pair="BTC-KRW", limit="50"):
         params = {
             'limit': limit
